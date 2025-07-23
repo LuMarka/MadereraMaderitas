@@ -1,0 +1,992 @@
+/* --- Base y Reseteo --- */
+*, *::before, *::after {
+    box-sizing: border-box; /* Aplica box-sizing a todos los elementos */
+}
+
+html, body {
+    height: 100%; /* Asegura que html y body tomen el 100% de la altura de la ventana */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita el scroll horizontal en todo el documento */
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f5ed; /* Un crema muy suave, que armoniza con marrones */
+    color: #333; /* Texto principal en gris oscuro */
+    line-height: 1.6; /* Mejor legibilidad del texto */
+}
+
+/* Para asegurar que las imágenes no desborden */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Elimina espacio extra debajo de las imágenes */
+}
+
+/* Estilos de botones generales */
+.btn {
+    background-color: #3d2f23; /* Un marrón más claro y amigable */
+    color: white;
+    padding: 12px 25px; /* Ajustado para un mejor aspecto */
+    border: none;
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave para hover */
+    display: inline-block; /* Para que padding y margen funcionen bien */
+    text-decoration: none; /* Si se usa en un <a> */
+}
+
+.btn:hover {
+    background-color: #6a4b32; /* Tono más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Pequeño efecto de levantamiento */
+}
+
+/* --- Encabezado --- */
+
+header {
+    background-color: #3d2f23; /* Marrón oscuro casi chocolate, robusto y cálido */
+    color: #fff;
+    padding: 15px 100px; /* Padding ajustado para escritorio */
+    position: sticky; /* O cambia a 'fixed' si prefieres esa opción */
+    top: 0; /* MUY IMPORTANTE: Se pega a la parte superior de la ventana */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    z-index: 1000; /* Asegura que el encabezado esté por encima de otros elementos */
+    /* Añade una sombra sutil para que se vea que está flotando sobre el contenido */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex; /* Para alinear la imagen y el texto si los mantienes */
+    align-items: center;
+}
+
+.nav-logo {
+    height: 45px; /* Altura del logo, ajusta según necesidad */
+    width: auto; /* Mantiene la proporción de la imagen */
+    margin-right: 10px; /* Espacio entre el logo y el h1 si lo mantienes */
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 2rem; /* Tamaño de fuente del logo */
+    font-weight: 600;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0; /* Elimina el margen por defecto de la lista */
+    padding: 0; /* Elimina el padding por defecto de la lista */
+    gap: 25px; /* Espacio entre los elementos de la lista */
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500; /* Peso de la fuente ligeramente más ligero */
+    transition: color 0.3s ease; /* Transición suave para el color */
+}
+
+.nav-links li a:hover {
+    color: #f8f5ed; /* Color del body al pasar el mouse */
+}
+
+/* --- Menú Hamburguesa (Móvil) --- */
+.hamburger {
+    display: none; /* Oculto por defecto en escritorio */
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px; /* Área de clic más grande */
+}
+
+.bar {
+    height: 3px;
+    width: 25px;
+    background-color: #fff;
+    margin: 4px 0; /* Espacio entre las barras */
+    transition: all 0.3s ease;
+    border-radius: 2px; /* Bordes ligeramente redondeados para las barras */
+}
+
+/* --- Secciones Generales --- */
+section {
+    padding: 60px 20px;
+    text-align: center;
+    overflow-x: hidden; 
+}
+
+/* --- Sección Hero --- */
+.hero {
+    position: relative;
+    height: 85vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    overflow: hidden; /* Oculta partes del carrusel fuera del contenedor */
+    padding: 0; /* Eliminar padding de sección para hero */
+}
+
+.hero-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1; /* El carrusel debe estar detrás del texto */
+}
+
+.carousel-images {
+    display: flex;
+    width: 400%; 
+    height: 100%;
+    animation: slide 16s infinite ease-in-out; /* Velocidad de la animación, ajustada para 4 imágenes */
+}
+
+.carousel-images img {
+    width: 100%; /* Cada imagen ocupa el 100% del ancho de su contenedor (400% / 4 = 100%) */
+    height: 100%;
+    object-fit: cover; /* Cubre el área sin distorsionar */
+    filter: brightness(70%); /* Oscurece las imágenes para que el texto resalte */
+}
+
+@keyframes slide {
+    0% { transform: translateX(0%); }
+    20% { transform: translateX(0%); } /* Muestra la primera imagen */
+    25% { transform: translateX(-25%); }
+    45% { transform: translateX(-25%); } /* Muestra la segunda imagen */
+    50% { transform: translateX(-50%); }
+    70% { transform: translateX(-50%); } /* Muestra la tercera imagen */
+    75% { transform: translateX(-75%); }
+    95% { transform: translateX(-75%); } /* Muestra la cuarta imagen */
+    100% { transform: translateX(-100%); } /* Vuelve al inicio para el bucle */
+}
+
+.hero-text {
+    z-index: 2; /* El texto debe estar por encima del carrusel */
+    position: relative; /* Para que z-index funcione */
+    max-width: 800px; /* Limita el ancho del texto */
+    padding: 20px;
+    margin-top:60px;
+    background-color: rgba(0, 0, 0, 0.3); /* Fondo semitransparente para el texto */
+    border-radius: 10px;
+}
+
+.hero h2 {
+    font-size: 3.5rem; /* Tamaño de fuente grande para el título */
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para que el texto resalte */
+}
+
+.hero p {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+}
+
+/* --- Sección Catálogo --- */
+.catalog {
+    background-color: #f8f5ed; /* Fondo claro para los productos */
+}
+
+.catalog h2 {
+    font-size: 2.5rem;
+    color: #3d2f23; /* Marrón del encabezado para los títulos de sección */
+    margin-bottom: 40px;
+}
+
+.catalog-container {
+    display: grid;
+    /* Las tarjetas se ajustan automáticamente, mínimo 250px, máximo 1fr (distribución equitativa) */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px; /* Espacio entre las tarjetas */
+    max-width: 1200px; /* Ancho máximo para el catálogo */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+}
+
+.product-card {
+    background-color: #fff; /* Blanco puro para destacar el producto */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra más definida */
+    padding: 20px;
+    display: flex; /* Para controlar la disposición interna */
+    flex-direction: column; /* Apila imagen, título, párrafo y botón */
+    justify-content: space-between; /* Distribuye el espacio verticalmente */
+    align-items: center; /* Centra horizontalmente el contenido */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+    cursor: pointer; /* Indica que la tarjeta es clicable */
+    text-align: center;
+}
+
+.product-card img {
+    width: 100%;
+    height: 180px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Asegura que la imagen cubra el espacio */
+    border-radius: 8px; /* Bordes redondeados para la imagen */
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    margin: 10px 0;
+    font-size: 1.3rem;
+    color: #444; /* Gris oscuro para los títulos de productos */
+    min-height: 3.6em; /* Asegura un alto mínimo para 2 líneas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-card p {
+    font-size: 0.95rem;
+    color: #666; /* Gris más suave para la descripción */
+    flex-grow: 1; /* Permite que el párrafo ocupe el espacio restante */
+    margin-bottom: 15px;
+    min-height: 4em; /* Asegura un alto mínimo para la descripción corta */
+}
+
+.product-card .btn {
+    width: auto; /* El botón no ocupará todo el ancho */
+    padding: 8px 18px; /* Padding más ajustado para el botón dentro de la tarjeta */
+    font-size: 0.9rem;
+    margin-top: auto; /* Empuja el botón hacia abajo si el contenido varía */
+}
+
+.product-card:hover {
+    transform: translateY(-8px); /* Efecto de levantamiento al pasar el mouse */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+}
+
+.datos{
+    background-color: #e3dcd1;
+    padding:60px 0;
+}
+
+/* --- Sección "Sobre Nosotros" --- */
+.nosotros {
+    background-color: #ffffff; /* Fondo blanco puro */
+    max-width: 1000px; /* Ancho máximo para la sección */
+    margin: 60px auto; /* Centrar la sección y añadir margen vertical */
+    padding: 50px; /* Espacio interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    text-align: left; /* Alineación del texto a la izquierda */
+}
+
+.nosotros h2 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    color: #3d2f23; /* Color del encabezado */
+    text-align: center; /* Centrar el título de la sección */
+}
+
+.nosotros p {
+    font-size: 1.05rem;
+    color: #555; /* Gris más oscuro para el texto del párrafo */
+    margin-bottom: 15px;
+}
+.img-nosotros{
+    width: 20%;
+    display: block; 
+    margin: 0 auto;
+    margin-top: 25px;
+    
+}
+/* --- Sección "Nuestras Maderas" --- */
+.nuestrasMaderas {
+    background-color: #fff; /* Fondo blanco puro */
+    max-width: 1000px; /* Ancho máximo para la sección */
+    margin: 60px auto; /* Centrar la sección y añadir margen vertical */
+    padding: 50px; /* Espacio interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    text-align: left; /* Alineación del texto a la izquierda */
+}
+
+.nuestrasMaderas h2 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    color: #3d2f23; /* Color del encabezado */
+    text-align: center; /* Centrar el título de la sección */
+}
+
+.nuestrasMaderas p {
+    font-size: 1.05rem;
+    color: #555; /* Gris más oscuro para el texto del párrafo */
+    margin-bottom: 15px;
+}
+
+
+/* --- Sección de Contacto --- */
+.contact {
+    /* background-color: #a7988e; /* Marrón medio oscuro */
+    background-color: #c8c0b4;
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.contact p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.contact form {
+    max-width: 600px;
+    margin: 0 auto 40px auto; /* Margen inferior para separar del mapa */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espacio entre los campos del formulario */
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 12px 15px; /* Más padding para los campos */
+    border-radius: 5px;
+    border: 1px solid #ccc; /* Borde sutil */
+    font-family: 'Poppins', sans-serif; /* Usar la misma fuente del body */
+    background-color: #fff; /* Fondo blanco para los campos de entrada */
+    color: #333;
+    font-size: 1rem;
+}
+
+.contact input::placeholder,
+.contact textarea::placeholder {
+    color: #888; /* Color para el texto del placeholder */
+}
+
+.contact textarea {
+    height: 120px; /* Altura ajustada para el textarea */
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+.contact form .btn {
+    align-self: center; /* Centra el botón dentro del formulario flex */
+    padding: 12px 30px; /* Padding generoso para el botón de envío */
+}
+
+.mapa {
+    margin: 40px 0; /* Margen para el mapa */
+}
+
+.mapa iframe {
+    width: 90%; /* Ancho del iframe del mapa */
+    max-width: 800px; /* Ancho máximo para el iframe */
+    height: 400px;
+    border: 3px solid #8c5b3b; /* Borde del color del botón */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Sombra para el mapa */
+}
+
+.contact-info {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px; /* Ancho máximo para el contenedor de info de contacto */
+    margin: 40px auto 0 auto; /* Centrar y margen superior */
+    padding: 30px 50px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra más visible */
+    /*background-color: #6a5344; /* Un marrón un poco más claro que el contacto general */
+    background-color: #a7988e;
+}
+
+.info-contacto {
+    text-align: left;
+    font-size: 1.1rem;
+    flex: 1; /* Ocupa el espacio disponible */
+    min-width: 280px; /* Ancho mínimo para evitar que se comprima demasiado */
+    margin-bottom: 20px; /* Margen para cuando se envuelven los elementos */
+}
+
+.info-contacto p {
+    margin: 8px 0; /* Espacio entre las líneas de info */
+    color: #eee; /* Color más claro para el texto de info de contacto */
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px; /* Espacio entre los iconos */
+    flex-wrap: wrap; /* Permite que los iconos se envuelvan */
+    justify-content: center; /* Centra los iconos si hay espacio */
+    margin-bottom: 20px; /* Margen para cuando se envuelven los elementos */
+}
+
+.social-icons img {
+    width: 45px; /* Tamaño un poco más grande para los iconos */
+    height: 45px;
+    transition: transform 0.3s ease;
+    border-radius: 50%; /* Iconos circulares */
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil */
+    padding: 5px;
+}
+
+.social-icons img:hover {
+    transform: scale(1.15); /* Agrandar un poco más al pasar el mouse */
+}
+
+/* --- Icono de WhatsApp Fijo --- */
+.whatsapp-icon {
+    position: fixed;
+    bottom: 30px; /* Más cerca del borde inferior */
+    right: 30px; /* Más cerca del borde derecho */
+    z-index: 1000; /* Asegura que esté siempre visible */
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-icon img {
+    width: 70px; /* Tamaño ajustado para el icono */
+    height: 70px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Sombra para destacarlo */
+    border-radius: 50%; /* Circular */
+}
+
+.whatsapp-icon:hover {
+    transform: scale(1.1); /* Efecto de crecimiento al pasar el mouse */
+}
+
+/* --- Pie de Página --- */
+footer {
+    text-align: center;
+    padding: 25px; /* Más padding */
+    background-color: #3d2f23; /* Mismo marrón oscuro que el encabezado */
+    color: white;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    text-decoration: none;
+    color: #f8f5ed; /* Color del body para los enlaces del footer */
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #8c5b3b; /* Color del botón al pasar el mouse */
+}
+
+
+/* --- Modal Styling --- */
+.modal {
+    display: none; /* MUY IMPORTANTE: Oculto por defecto. JS lo hará 'flex' */
+    position: fixed;
+    z-index: 1001; /* Asegura que esté por encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto; /* Habilitar scroll vertical si el contenido es muy largo */
+    overflow-x: hidden; /* Prevenir scroll horizontal */
+    background-color: rgba(0, 0, 0, 0.75); /* Fondo semi-transparente más oscuro */
+    /* Estas propiedades son para centrar el modal cuando display es 'flex' */
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Padding general para el modal */
+}
+
+.modal-content {
+    background-color: #fff;
+    /* margin: auto; Ya no es necesario con justify-content/align-items en .modal */
+    padding: 35px; /* Más padding para el contenido del modal */
+    border-radius: 12px; /* Bordes más redondeados */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
+    max-width: 750px; /* Ancho máximo un poco mayor */
+    width: 90%; /* Ancho responsivo */
+    position: relative;
+    text-align: center;
+    animation: fadeInScale 0.4s ease-out; /* Animación de entrada con escala */
+    /* Asegura que el contenido del modal no se desborde internamente si el padding se reduce */
+    box-sizing: border-box;
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: translateY(-30px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-content img {
+    max-width: 90%; /* Ligeramente más pequeño para no tocar los bordes */
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra para la imagen del modal */
+}
+
+.modal-content h3 {
+    font-size: 2rem; /* Título del modal un poco más grande */
+    color: #3d2f23;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.modal-content p {
+    font-size: 1.15rem; /* Texto de descripción un poco más grande */
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+#modalProductPrice {
+    font-weight: 700; /* Precio más destacado */
+    color: #8c5b3b;
+    font-size: 1.4rem;
+    margin-top: -10px;
+    margin-bottom: 30px; /* Más espacio debajo del precio */
+}
+
+.close-button {
+    color: #777; /* Color más oscuro para la 'x' */
+    position: absolute;
+    top: 18px; /* Ajuste de posición */
+    right: 28px; /* Ajuste de posición */
+    font-size: 40px; /* Tamaño más grande para la 'x' */
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #3d2f23; /* Color marrón del encabezado al pasar el mouse */
+    transform: rotate(90deg); /* Animación de rotación */
+    text-decoration: none;
+}
+
+#modalContactButton {
+    margin-top: 20px;
+    padding: 12px 30px; /* Padding similar al botón de envío de formulario */
+    font-size: 1.1rem;
+}
+
+/* --- Media Queries (Responsividad) --- */
+
+/* Para pantallas grandes / tabletas horizontales (ej. iPad Pro, laptops pequeñas) */
+@media (max-width: 1200px) {
+    header {
+        padding: 15px 70px; /* Ajuste de padding para pantallas más pequeñas que 1200px */
+    }
+    .catalog-container {
+        max-width: 950px; /* Reduce un poco el ancho máximo del catálogo */
+    }
+}
+
+/* Para pantallas medianas / tabletas (portrait) */
+@media (max-width: 992px) {
+    header {
+        padding: 15px 50px; /* Ajuste de padding */
+    }
+    .hero h2 {
+        font-size: 3rem;
+    }
+    .hero p {
+        font-size: 1.3rem;
+    }
+    .catalog h2 {
+        font-size: 2.2rem;
+    }
+    .catalog-container {
+        max-width: 90%; /* Aumenta el ancho para usar más espacio */
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Permite tarjetas un poco más pequeñas */
+        gap: 15px;
+    }
+    .nosotros, .nuestrasMaderas {
+        max-width: 800px;
+        padding: 40px;
+    }
+    .contact-info {
+        width: 85%;
+        padding: 25px 40px;
+    }
+    .whatsapp-icon img {
+        width: 65px;
+        height: 65px;
+    }
+}
+
+/* Para pantallas pequeñas / móviles (landscape) y tabletas (portrait) */
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px; /* Menos padding horizontal */
+    }
+    .nav-links {
+        display: none; /* Oculto por defecto */
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* Debajo del header (asumiendo altura de header 70px) */
+        left: 0;
+        /* CAMBIO AQUI: Fondo translúcido */
+        background-color: rgba(61, 47, 35, 0.9); /* Usando tu marrón oscuro (#3d2f23) con 90% de opacidad */
+        width: 100%;
+        z-index: 999; /* Por debajo del hamburger, pero encima de todo lo demás */
+        box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    .nav-links.active {
+        display: flex; /* Se muestra con JS */
+    }
+    .nav-links li {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+    .nav-links li a {
+        display: block; /* Para que toda el área del li sea clicable */
+        padding: 15px 0;
+        font-size: 1.1rem;
+    }
+    .hamburger {
+        display: flex; /* Mostrar el ícono de hamburguesa */
+        /* No necesitamos cambiar su posición aquí si ya está a la derecha por justify-content: space-between en nav */
+    }
+
+    /* CAMBIO AQUI: Achicar la letra del nombre de la maderera en pantallas más pequeñas */
+    .logo h1 {
+        font-size: 1.6rem; /* Reducido para pantallas de hasta 768px */
+    }
+
+    .hero {
+        height: 70vh; /* Altura un poco menor para el hero */
+    }
+    .hero h2 {
+        font-size: 2.2rem; /* Tamaño más ajustado para móviles */
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .hero-text {
+        padding: 15px; /* Menor padding para el texto del hero */
+    }
+    .catalog {
+        padding: 40px 15px; /* Menor padding */
+    }
+    .catalog-container {
+        max-width: 95%; /* Asegura que no haya scroll horizontal en catálog */
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Ajuste para tarjetas en tablets y móviles grandes */
+        gap: 15px;
+    }
+    .product-card {
+        padding: 12px;
+    }
+    .product-card h3 {
+        font-size: 1.1rem;
+    }
+    .product-card p {
+        font-size: 0.9rem;
+    }
+    
+    /* NOSOTROS Y NUESTRAS MADERAS */
+    .nosotros, .nuestrasMaderas {
+        max-width: 90%;
+        padding: 25px;
+    }
+    .nosotros h2, .nuestrasMaderas h2 { /* MISMO TAMAÑO */
+        font-size: 1.8rem;
+    }
+    .nosotros p, .nuestrasMaderas p { /* MISMO TAMAÑO */
+        font-size: 0.95rem;
+    }
+    /* Añadido para H3 dentro de estas secciones (si existieran) */
+    .nosotros h3, .nuestrasMaderas h3 {
+        font-size: 1.3rem; /* Proporcionalmente más pequeño */
+    }
+    /* Añadido para H4 dentro de estas secciones (si existieran) */
+    .nosotros h4, .nuestrasMaderas h4 {
+        font-size: 1.1rem; /* Proporcionalmente más pequeño */
+    }
+
+    .contact-info {
+        flex-direction: column; /* Apila la info de contacto y los íconos */
+        align-items: center;
+        text-align: center;
+        width: 95%; /* Ajustado para móviles */
+        padding: 20px;
+    }
+    .info-contacto {
+        text-align: center;
+        margin-bottom: 25px; /* Más espacio entre info y redes */
+    }
+    .social-icons {
+        justify-content: center; /* Centra los iconos si están apilados */
+    }
+    .whatsapp-icon {
+        bottom: 15px;
+        right: 15px;
+    }
+    .whatsapp-icon img {
+        width: 50px;
+        height: 50px;
+    }
+    .mapa iframe {
+        width: 100%; /* Asegura que el mapa se estire al 100% */
+        height: 300px; /* Reduce la altura del mapa */
+        margin-top: 20px;
+    }
+    .contact form {
+        width: 95%; /* El formulario de contacto ocupa casi todo el ancho */
+        padding: 0 10px; /* Pequeño padding horizontal para el formulario en sí */
+    }
+
+    /* Modal para móviles */
+    .modal-content {
+        width: 95%; /* El modal se ajusta al ancho del viewport */
+        padding: 20px; /* Reducir padding en móviles */
+        max-height: 90vh; /* Limita la altura máxima del modal */
+        overflow-y: auto; /* Permite desplazamiento interno si el contenido es grande */
+    }
+    .modal-content h3 {
+        font-size: 1.5rem;
+    }
+    .modal-content p {
+        font-size: 1rem;
+    }
+    #modalProductPrice {
+        font-size: 1.2rem;
+    }
+    .close-button {
+        font-size: 30px;
+        top: 10px;
+        right: 15px;
+    }
+}
+
+/* Para móviles muy pequeños (ej. iPhone SE) */
+@media (max-width: 480px) {
+    /* CAMBIO AQUI: Achicar aún más la letra del nombre de la maderera */
+    .logo h1 {
+        font-size: 1.3rem; /* Más reducido para pantallas muy pequeñas */
+    }
+    .nav-logo {
+        height: 35px; /* Más pequeño en móviles muy pequeños */
+    }
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+    .hero p {
+        font-size: 0.9rem;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    .catalog h2 {
+        font-size: 1.8rem;
+    }
+    .catalog-container {
+        grid-template-columns: 1fr; /* Una columna en pantallas muy pequeñas */
+    }
+    .product-card img {
+        height: 150px; /* Imágenes de producto un poco más pequeñas */
+    }
+
+    /* NOSOTROS Y NUESTRAS MADERAS */
+    .nosotros, .nuestrasMaderas {
+        max-width: 95%; /* Ligeramente más ancho para usar más espacio */
+        padding: 15px; /* Menor padding */
+    }
+    .nosotros h2, .nuestrasMaderas h2 { /* MISMO TAMAÑO */
+        font-size: 1.5rem; /* Más reducido para móviles muy pequeños */
+    }
+    .nosotros p, .nuestrasMaderas p { /* MISMO TAMAÑO */
+        font-size: 0.85rem; /* Más reducido para móviles muy pequeños */
+    }
+    /* Achicar h3 y h4 proporcionalmente para móviles muy pequeños */
+    .nosotros h3, .nuestrasMaderas h3 {
+        font-size: 1.1rem;
+    }
+    .nosotros h4, .nuestrasMaderas h4 {
+        font-size: 0.95rem;
+    }
+
+    .contact h2 {
+        font-size: 1.8rem;
+    }
+    .contact p {
+        font-size: 0.95rem;
+    }
+    .contact input,
+    .contact textarea {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    .mapa iframe {
+        height: 250px;
+    }
+    .info-contacto p {
+        font-size: 1rem;
+    }
+    .social-icons img {
+        width: 35px;
+        height: 35px;
+    }
+    .whatsapp-icon img {
+        width: 45px;
+        height: 45px;
+    }
+    footer {
+        padding: 20px 10px;
+        font-size: 0.8rem;
+    }
+
+    .info-contacto p {
+        font-size: 0.9rem; /* Reduce el tamaño de fuente para el texto de info-contacto */
+        word-wrap: break-word; /* Rompe palabras largas si no caben en una línea */
+        overflow-wrap: break-word; /* Otra propiedad para romper palabras largas */
+    }
+
+    .contact-info {
+        padding: 15px; /* Reduce el padding del contenedor de info de contacto */
+        width: 98%; /* Asegura que ocupe casi todo el ancho disponible */
+    }
+
+    /* Asegurar que los social icons no sean demasiado grandes */
+    .social-icons img {
+        width: 30px; /* Reduce el tamaño de los iconos sociales */
+        height: 30px;
+    }
+
+    /* Asegura que el modal siga siendo usable */
+    .modal-content {
+        padding: 15px;
+        width: 98%; /* Casi todo el ancho */
+    }
+    .modal-content h3 {
+        font-size: 1.3rem;
+    }
+    .modal-content p {
+        font-size: 0.9rem;
+    }
+    #modalProductPrice {
+        font-size: 1.1rem;
+    }
+    #modalContactButton {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
+
+/* NUEVA MEDIA QUERY: Para pantallas extremadamente pequeñas (si es necesario un ajuste más fino) */
+@media (max-width: 360px) {
+    .logo h1 {
+        font-size: 1.1rem; /* Pequeño ajuste para dispositivos muy estrechos */
+    }
+    .nav-logo {
+        height: 30px; /* Aún más pequeño si es necesario */
+    }
+    /* Puedes añadir más ajustes aquí para elementos que se vean mal en pantallas minúsculas */
+}
+
+
+/* --- Estilos específicos para la página de Políticas de Privacidad --- */
+
+/* Envuelve el contenido principal para centrarlo y darle un fondo blanco */
+.main-content-wrapper {
+    background-color: #f8f5ed; /* Mismo color de fondo general */
+    padding: 40px 20px; /* Padding superior e inferior, y lateral */
+    min-height: calc(100vh - 70px - 90px); /* Altura mínima: 100% viewport - altura header - altura footer */
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: flex-start; /* Alinea el contenido arriba */
+}
+
+.contenedor-politicas {
+    max-width: 800px; /* Limita el ancho para mejor legibilidad */
+    margin: 20px auto; /* Centra y añade margen vertical */
+    background-color: #fff; /* Fondo blanco para el contenido de las políticas */
+    padding: 40px 30px; /* Padding interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    text-align: left; /* Alineación del texto a la izquierda */
+}
+
+.contenedor-politicas h1 {
+    font-size: 2.5rem; /* Tamaño para el título principal */
+    color: #3d2f23; /* Marrón oscuro para los títulos */
+    margin-bottom: 30px;
+    text-align: center; /* Centrar el título */
+}
+
+.contenedor-politicas h2 {
+    font-size: 1.8rem; /* Tamaño para los subtítulos */
+    color: #5c4737; /* Un marrón un poco más claro para subtítulos */
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee; /* Línea sutil debajo de los subtítulos */
+    padding-bottom: 5px;
+}
+
+.contenedor-politicas p {
+    font-size: 1.05rem; /* Tamaño de fuente para el texto normal */
+    color: #555; /* Gris oscuro para el texto */
+    margin-bottom: 20px;
+    line-height: 1.7; /* Espacio entre líneas para mejor lectura */
+}
+
+.contenedor-politicas p a {
+    color: #8c5b3b; /* Color de los enlaces dentro de las políticas */
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contenedor-politicas p a:hover {
+    text-decoration: underline;
+}
+
+/* --- Media Queries para las Políticas (para ajustar en móviles) --- */
+@media (max-width: 768px) {
+    .main-content-wrapper {
+        padding: 20px 10px; /* Reducir padding en móviles */
+    }
+    .contenedor-politicas {
+        padding: 25px 20px; /* Reducir padding interno */
+        margin: 10px auto; /* Menos margen vertical */
+    }
+    .contenedor-politicas h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    .contenedor-politicas h2 {
+        font-size: 1.5rem;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    .contenedor-politicas p {
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenedor-politicas {
+        padding: 15px;
+    }
+    .contenedor-politicas h1 {
+        font-size: 1.8rem;
+    }
+    .contenedor-politicas h2 {
+        font-size: 1.3rem;
+    }
+    .contenedor-politicas p {
+        font-size: 0.9rem;
+    }
+}
