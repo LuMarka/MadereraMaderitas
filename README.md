@@ -79,6 +79,4 @@ Para que el formulario de contacto funcione correctamente, necesitarás configur
             // ...
         });
     ```
----
 
-**© 2025 Maderera Maderitas.** Todos los derechos reservados.
