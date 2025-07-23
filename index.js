@@ -287,9 +287,9 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.disabled = true; // Deshabilitar el botón para evitar múltiples envíos
 
             // IDs de servicio y plantilla de EmailJS.
-            const serviceID = 'service_ji1x7vk';
-            const templateID_to_me = 'template_1jvjkal';
-            const templateID_auto_reply = 'template_ed74urh';
+            const serviceID = 'service_****';
+            const templateID_to_me = 'template_****';
+            const templateID_auto_reply = 'template_***';
 
             // Obtener los valores del formulario
             const form = this; // 'this' se refiere al formulario en este contexto
