@@ -1,11 +1,18 @@
 # 🌳 Maderera Maderitas 🪵
 
-![Maderera Maderitas - Logo](https://via.placeholder.com/150x80?text=Maderitas+Logo) ¡Bienvenido al repositorio de **Maderera Maderitas**! Este proyecto es un sitio web moderno y responsivo diseñado para una maderera, presentando sus productos (catálogo), información sobre la empresa (nosotros, nuestras maderas) y opciones de contacto.
+<p align="center">
+  <img width="100" height="100" alt="Maderera Maderitas - Logo" src="https://github.com/user-attachments/assets/36d28323-95f3-4592-95e7-f2fcb1475411" />
+</p>
+
+¡Bienvenido al repositorio de **Maderera Maderitas**! Este proyecto es un sitio web moderno y responsivo diseñado para una maderera, presentando sus productos (catálogo), información sobre la empresa (nosotros, nuestras maderas) y opciones de contacto.
+
+<div style="margin-top: 20px;"></div> <img width="1248" height="832" alt="image" src="https://github.com/user-attachments/assets/4c52c682-d350-4a9d-9c40-6684491d1c4c" />
+
 
 ## 🚀 Demo en Vivo
 
 Puedes ver el proyecto desplegado y funcionando en:
-[https://madereramaderitas.vercel.app/](https://madereramaderitas.vercel.app/) ## ✨ Características Principales
+[https://maderera-maderitas.vercel.app/](https://maderera-maderitas.vercel.app/) ## ✨ Características Principales
 
 * **Diseño Responsivo:** Adaptado a cualquier tamaño de pantalla (escritorio, tabletas, móviles).
 * **Carrusel de Imágenes Dinámico:** Una sección hero con un carrusel de imágenes para una presentación visual atractiva.
@@ -16,8 +23,8 @@ Puedes ver el proyecto desplegado y funcionando en:
 * **Integración con Redes Sociales:** Enlaces a las principales plataformas.
 * **Botón Flotante de WhatsApp:** Acceso rápido a la comunicación directa con la maderera.
 * **Política de Privacidad:** Sección dedicada a las políticas de privacidad, importante para la transparencia y cumplimiento normativo.
-* **Código Organizado.
-
+* **Código Organizado.**
+  
 ## 🛠️ Tecnologías Utilizadas
 
 * **HTML5:** Estructura y contenido del sitio web.
